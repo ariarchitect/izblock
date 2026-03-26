@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage
+  SchemaVersion="1.0"
+  AutodeskProduct="AutoCAD"
+  Name="IzAutoCADPlugin"
+  AppVersion="1.0.0"
+  ProductType="Application"
+  Description="IZ DWG export plugin for AutoCAD 2023-2025">
+  <CompanyDetails Name="IZ" Url="https://example.com" />
+  <Components Description="IZ AutoCAD Plugin Module 2023">
+    <RuntimeRequirements
+      OS="Win64"
+      Platform="AutoCAD*"
+      SeriesMin="R24.2"
+      SeriesMax="R24.2" />
+    <ComponentEntry
+      AppName="IzAutoCADPlugin"
+      ModuleName="./Contents/2023/IzAutoCADPlugin.dll"
+      AppDescription="DWG export to Excel"
+      LoadOnAutoCADStartup="True" />
+  </Components>
+  <Components Description="IZ AutoCAD Plugin Module 2024">
+    <RuntimeRequirements
+      OS="Win64"
+      Platform="AutoCAD*"
+      SeriesMin="R24.3"
+      SeriesMax="R24.3" />
+    <ComponentEntry
+      AppName="IzAutoCADPlugin"
+      ModuleName="./Contents/2024/IzAutoCADPlugin.dll"
+      AppDescription="DWG export to Excel"
+      LoadOnAutoCADStartup="True" />
+  </Components>
+  <Components Description="IZ AutoCAD Plugin Module 2025">
+    <RuntimeRequirements
+      OS="Win64"
+      Platform="AutoCAD*"
+      SeriesMin="R25.0"
+      SeriesMax="R25.0" />
+    <ComponentEntry
+      AppName="IzAutoCADPlugin"
+      ModuleName="./Contents/2025/IzAutoCADPlugin.dll"
+      AppDescription="DWG export to Excel"
+      LoadOnAutoCADStartup="True" />
+  </Components>
+</ApplicationPackage>

@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>IzAutoCADPlugin</RootNamespace>
+    <AssemblyName>IzAutoCADPlugin</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AutoCADDir Condition="'$(AutoCADDir)' == '' and '$(AutoCAD2024Dir)' != ''">$(AutoCAD2024Dir)</AutoCADDir>
+    <AutoCADDir Condition="'$(AutoCADDir)' == ''">C:\Program Files\Autodesk\AutoCAD 2024</AutoCADDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="AcMgd">
+      <HintPath>$(AutoCADDir)\AcMgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>$(AutoCADDir)\AcDbMgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="AcCoreMgd">
+      <HintPath>$(AutoCADDir)\AcCoreMgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="AdWindows">
+      <HintPath>$(AutoCADDir)\AdWindows.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

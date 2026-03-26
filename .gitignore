@@ -1,0 +1,68 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.code-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Git / temp
+*.tmp
+*.temp
+*.log
+*.bak
+*.orig
+
+# .NET / MSBuild
+**/bin/
+**/obj/
+*.pdb
+*.cache
+*.nupkg
+*.snupkg
+packages/
+TestResults/
+artifacts/
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+
+# Rider / ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Node (future tools/ui)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Python (future data tools)
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Build outputs for bundle staging (if generated)
+IzAutoCADPlugin.bundle/Contents/2023/*.dll
+IzAutoCADPlugin.bundle/Contents/2024/*.dll
+IzAutoCADPlugin.bundle/Contents/2025/*.dll
+IzAutoCADPlugin.bundle/Contents/2023/Resources/*
+IzAutoCADPlugin.bundle/Contents/2024/Resources/*
+IzAutoCADPlugin.bundle/Contents/2025/Resources/*
+
+# Keep template dirs and package manifest in git
+!IzAutoCADPlugin.bundle/PackageContents.xml
+!IzAutoCADPlugin.bundle/Contents/2023/.gitkeep
+!IzAutoCADPlugin.bundle/Contents/2024/.gitkeep
+!IzAutoCADPlugin.bundle/Contents/2025/.gitkeep
+!IzAutoCADPlugin.bundle/Contents/2023/Resources/.gitkeep
+!IzAutoCADPlugin.bundle/Contents/2024/Resources/.gitkeep
+!IzAutoCADPlugin.bundle/Contents/2025/Resources/.gitkeep
