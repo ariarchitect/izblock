@@ -10,7 +10,7 @@ internal sealed class AppSettings
     public string Prop2Set { get; set; } = "EQUIPMENT";
     public string Prop2Name { get; set; } = "Model";
     public bool WriteToId { get; set; }
-    public string TapirBaseUrl { get; set; } = "http://127.0.0.1:19723";
+    public string TapirBaseUrl { get; set; } = "http://127.0.0.1:19725";
 }
 
 internal static class SettingsStore

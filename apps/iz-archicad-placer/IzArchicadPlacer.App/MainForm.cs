@@ -178,7 +178,7 @@ internal sealed class MainForm : Form
 
     private void LoadSettingsToUi()
     {
-        _tapirUrl.Text = string.IsNullOrWhiteSpace(_settings.TapirBaseUrl) ? "http://127.0.0.1:19723" : _settings.TapirBaseUrl;
+        _tapirUrl.Text = string.IsNullOrWhiteSpace(_settings.TapirBaseUrl) ? "http://127.0.0.1:19725" : _settings.TapirBaseUrl;
         _units.SelectedItem = _settings.Units;
         if (_units.SelectedIndex < 0)
         {

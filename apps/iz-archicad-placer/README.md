@@ -47,5 +47,5 @@ dotnet publish .\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj -c Release -r 
 
 ## Notes
 
-- Default Tapir URL is `http://127.0.0.1:19723`.
+- Default Tapir URL is `http://127.0.0.1:19725`.
 - If your Archicad/Tapir endpoint differs, set it in app UI before `Reload Stories`.
