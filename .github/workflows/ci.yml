@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restore iz-matcher
+        run: dotnet restore .\apps\iz-matcher\IzMatcher.App\IzMatcher.App.csproj
+
+      - name: Build iz-matcher
+        run: dotnet build .\apps\iz-matcher\IzMatcher.App\IzMatcher.App.csproj -c Release --no-restore
+
+      - name: Restore iz-archicad-placer
+        run: dotnet restore .\apps\iz-archicad-placer\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj
+
+      - name: Build iz-archicad-placer
+        run: dotnet build .\apps\iz-archicad-placer\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj -c Release --no-restore

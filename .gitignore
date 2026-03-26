@@ -20,6 +20,9 @@ Desktop.ini
 # .NET / MSBuild
 **/bin/
 **/obj/
+**/publish/
+**/publish-*/
+**/publish_*/
 *.pdb
 *.cache
 *.nupkg

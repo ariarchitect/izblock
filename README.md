@@ -55,6 +55,12 @@ Build all installed versions:
 
 Detailed notes: [BUILDING.md](BUILDING.md)
 
+## Repository tooling
+
+- Solution: `izblock.sln`
+- Contribution guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+- License: [LICENSE](LICENSE)
+
 ## Roadmap
 
 1. Stabilize Excel export schema (versioned format).

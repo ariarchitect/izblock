@@ -9,7 +9,7 @@ namespace IzAutoCADPlugin
     public sealed class ExportDialog : Form
     {
         private readonly ListBox _filesList;
-        private readonly TextBox _outputFolderTextBox;
+        private readonly TextBox _outputFileTextBox;
         private readonly ProgressBar _filesProgressBar;
         private readonly ProgressBar _entitiesProgressBar;
         private readonly Label _filesProgressLabel;
@@ -55,12 +55,12 @@ namespace IzAutoCADPlugin
 
             var outputLabel = new Label
             {
-                Text = "Output Folder:",
+                Text = "Output File:",
                 Location = new Point(20, 302),
                 Size = new Size(140, 20)
             };
 
-            _outputFolderTextBox = new TextBox
+            _outputFileTextBox = new TextBox
             {
                 Location = new Point(20, 326),
                 Size = new Size(600, 26)
@@ -72,7 +72,7 @@ namespace IzAutoCADPlugin
                 Location = new Point(630, 324),
                 Size = new Size(110, 30)
             };
-            _browseOutputButton.Click += (_, __) => BrowseOutputFolder();
+            _browseOutputButton.Click += (_, __) => BrowseOutputFile();
 
             _runButton = new Button
             {
@@ -124,7 +124,7 @@ namespace IzAutoCADPlugin
             Controls.Add(_clearFilesButton);
             Controls.Add(_filesList);
             Controls.Add(outputLabel);
-            Controls.Add(_outputFolderTextBox);
+            Controls.Add(_outputFileTextBox);
             Controls.Add(_browseOutputButton);
             Controls.Add(_runButton);
             Controls.Add(_statusLabel);
@@ -156,22 +156,34 @@ namespace IzAutoCADPlugin
                     _filesList.Items.Add(path);
                 }
 
-                if (string.IsNullOrWhiteSpace(_outputFolderTextBox.Text) && dialog.FileNames.Length > 0)
+                if (string.IsNullOrWhiteSpace(_outputFileTextBox.Text) && dialog.FileNames.Length > 0)
                 {
-                    _outputFolderTextBox.Text = Path.GetDirectoryName(dialog.FileNames[0]);
+                    string baseDir = Path.GetDirectoryName(dialog.FileNames[0]) ?? string.Empty;
+                    _outputFileTextBox.Text = Path.Combine(baseDir, "result.xlsx");
                 }
             }
         }
 
-        private void BrowseOutputFolder()
+        private void BrowseOutputFile()
         {
-            using (var dialog = new FolderBrowserDialog())
+            using (var dialog = new SaveFileDialog())
             {
-                dialog.Description = "Select output folder for Excel";
-                dialog.SelectedPath = _outputFolderTextBox.Text;
+                dialog.Filter = "Excel Workbook (*.xlsx)|*.xlsx";
+                dialog.DefaultExt = "xlsx";
+                dialog.AddExtension = true;
+                dialog.Title = "Select output Excel file";
+                dialog.FileName = string.IsNullOrWhiteSpace(_outputFileTextBox.Text)
+                    ? "result.xlsx"
+                    : Path.GetFileName(_outputFileTextBox.Text);
+                string initialDir = Path.GetDirectoryName(_outputFileTextBox.Text);
+                if (!string.IsNullOrWhiteSpace(initialDir) && Directory.Exists(initialDir))
+                {
+                    dialog.InitialDirectory = initialDir;
+                }
+
                 if (dialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    _outputFolderTextBox.Text = dialog.SelectedPath;
+                    _outputFileTextBox.Text = dialog.FileName;
                 }
             }
         }
@@ -185,16 +197,29 @@ namespace IzAutoCADPlugin
                 return;
             }
 
-            string outputFolder = _outputFolderTextBox.Text?.Trim();
-            if (string.IsNullOrWhiteSpace(outputFolder))
+            string excelFile = _outputFileTextBox.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(excelFile))
             {
-                MessageBox.Show(this, "Select an output folder.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Select an output Excel file.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!Directory.Exists(outputFolder))
+            if (!excelFile.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase))
             {
-                Directory.CreateDirectory(outputFolder);
+                excelFile += ".xlsx";
+                _outputFileTextBox.Text = excelFile;
+            }
+
+            string outputDir = Path.GetDirectoryName(excelFile);
+            if (string.IsNullOrWhiteSpace(outputDir))
+            {
+                MessageBox.Show(this, "Output path is invalid.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir);
             }
 
             ToggleUi(false);
@@ -209,8 +234,6 @@ namespace IzAutoCADPlugin
 
             try
             {
-                string excelFile = Path.Combine(outputFolder, "result.xlsx");
-
                 var result = DwgCsvExporter.Export(files, excelFile, progressUpdate =>
                 {
                     UpdateProgressUi(progressUpdate);
@@ -244,7 +267,7 @@ namespace IzAutoCADPlugin
             _clearFilesButton.Enabled = enabled;
             _browseOutputButton.Enabled = enabled;
             _filesList.Enabled = enabled;
-            _outputFolderTextBox.Enabled = enabled;
+            _outputFileTextBox.Enabled = enabled;
         }
 
         private void UpdateProgressUi(ExportProgress progress)
