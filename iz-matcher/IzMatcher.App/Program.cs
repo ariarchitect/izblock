@@ -117,10 +117,10 @@ internal sealed class MainForm : Form
     {
         try
         {
-            string iconPath = Path.Combine(AppContext.BaseDirectory, "Resources", "app.ico");
-            if (File.Exists(iconPath))
+            string exePath = Application.ExecutablePath;
+            if (File.Exists(exePath))
             {
-                Icon = new Icon(iconPath);
+                Icon = Icon.ExtractAssociatedIcon(exePath);
             }
         }
         catch

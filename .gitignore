@@ -23,13 +23,14 @@ Desktop.ini
 **/publish/
 **/publish-*/
 **/publish_*/
+/release/
+/artifacts/
 *.pdb
 *.cache
 *.nupkg
 *.snupkg
 packages/
 TestResults/
-artifacts/
 
 # NuGet
 *.nuget.props
@@ -54,18 +55,19 @@ __pycache__/
 venv/
 
 # Build outputs for bundle staging (if generated)
-IzAutoCADPlugin.bundle/Contents/2023/*.dll
-IzAutoCADPlugin.bundle/Contents/2024/*.dll
-IzAutoCADPlugin.bundle/Contents/2025/*.dll
-IzAutoCADPlugin.bundle/Contents/2023/Resources/*
-IzAutoCADPlugin.bundle/Contents/2024/Resources/*
-IzAutoCADPlugin.bundle/Contents/2025/Resources/*
+build/autocad/template/IzAutoCADPlugin.bundle/Contents/2023/*.dll
+build/autocad/template/IzAutoCADPlugin.bundle/Contents/2024/*.dll
+build/autocad/template/IzAutoCADPlugin.bundle/Contents/2025/*.dll
+build/autocad/template/IzAutoCADPlugin.bundle/Contents/2023/Resources/*
+build/autocad/template/IzAutoCADPlugin.bundle/Contents/2024/Resources/*
+build/autocad/template/IzAutoCADPlugin.bundle/Contents/2025/Resources/*
 
 # Keep template dirs and package manifest in git
-!IzAutoCADPlugin.bundle/PackageContents.xml
-!IzAutoCADPlugin.bundle/Contents/2023/.gitkeep
-!IzAutoCADPlugin.bundle/Contents/2024/.gitkeep
-!IzAutoCADPlugin.bundle/Contents/2025/.gitkeep
-!IzAutoCADPlugin.bundle/Contents/2023/Resources/.gitkeep
-!IzAutoCADPlugin.bundle/Contents/2024/Resources/.gitkeep
-!IzAutoCADPlugin.bundle/Contents/2025/Resources/.gitkeep
+!artifacts/.gitkeep
+!build/autocad/template/IzAutoCADPlugin.bundle/PackageContents.xml
+!build/autocad/template/IzAutoCADPlugin.bundle/Contents/2023/.gitkeep
+!build/autocad/template/IzAutoCADPlugin.bundle/Contents/2024/.gitkeep
+!build/autocad/template/IzAutoCADPlugin.bundle/Contents/2025/.gitkeep
+!build/autocad/template/IzAutoCADPlugin.bundle/Contents/2023/Resources/.gitkeep
+!build/autocad/template/IzAutoCADPlugin.bundle/Contents/2024/Resources/.gitkeep
+!build/autocad/template/IzAutoCADPlugin.bundle/Contents/2025/Resources/.gitkeep

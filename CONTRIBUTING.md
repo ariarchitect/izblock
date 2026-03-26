@@ -14,13 +14,13 @@ Thanks for contributing to `izblock`.
 Matcher:
 
 ```powershell
-dotnet build .\apps\iz-matcher\IzMatcher.App\IzMatcher.App.csproj -c Release
+dotnet build .\iz-matcher\IzMatcher.App\IzMatcher.App.csproj -c Release
 ```
 
 Archicad placer:
 
 ```powershell
-dotnet build .\apps\iz-archicad-placer\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj -c Release
+dotnet build .\iz-archicad-placer\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj -c Release
 ```
 
 AutoCAD plugin (requires local AutoCAD API DLLs):

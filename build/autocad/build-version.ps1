@@ -8,9 +8,10 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$repoRoot = Split-Path -Parent $PSScriptRoot
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$bundleRoot = Join-Path $repoRoot "build\autocad\template\IzAutoCADPlugin.bundle"
 $projectPath = Join-Path $repoRoot "IzAutoCADPlugin\IzAutoCADPlugin.csproj"
-$bundleTarget = Join-Path $repoRoot "IzAutoCADPlugin.bundle\Contents\$Year"
+$bundleTarget = Join-Path $bundleRoot "Contents\$Year"
 
 if ([string]::IsNullOrWhiteSpace($AutoCADDir)) {
     $AutoCADDir = "C:\Program Files\Autodesk\AutoCAD $Year"

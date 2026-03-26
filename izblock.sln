@@ -5,15 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzAutoCADPlugin", "IzAutoCADPlugin\IzAutoCADPlugin.csproj", "{7F7DDBF6-7ACD-4D42-9352-9C930DB13C59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{8A769330-93B5-4B43-BF10-A30E101C1710}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iz-matcher", "iz-matcher", "{8830B6F5-F9AB-448F-A3B8-31D8E7EC3E32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzMatcher.App", "apps\iz-matcher\IzMatcher.App\IzMatcher.App.csproj", "{C1994FDB-6747-4361-96A2-2C3050EB72EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzMatcher.App", "iz-matcher\IzMatcher.App\IzMatcher.App.csproj", "{C1994FDB-6747-4361-96A2-2C3050EB72EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iz-archicad-placer", "iz-archicad-placer", "{0D869F90-8218-4C00-B770-49936D522268}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzArchicadPlacer.App", "apps\iz-archicad-placer\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj", "{550A3DFA-EC37-4B3A-950A-58C26ADBD6AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IzArchicadPlacer.App", "iz-archicad-placer\IzArchicadPlacer.App\IzArchicadPlacer.App.csproj", "{550A3DFA-EC37-4B3A-950A-58C26ADBD6AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +36,7 @@ Global
 		{550A3DFA-EC37-4B3A-950A-58C26ADBD6AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8830B6F5-F9AB-448F-A3B8-31D8E7EC3E32} = {8A769330-93B5-4B43-BF10-A30E101C1710}
 		{C1994FDB-6747-4361-96A2-2C3050EB72EF} = {8830B6F5-F9AB-448F-A3B8-31D8E7EC3E32}
-		{0D869F90-8218-4C00-B770-49936D522268} = {8A769330-93B5-4B43-BF10-A30E101C1710}
 		{550A3DFA-EC37-4B3A-950A-58C26ADBD6AF} = {0D869F90-8218-4C00-B770-49936D522268}
 	EndGlobalSection
 EndGlobal

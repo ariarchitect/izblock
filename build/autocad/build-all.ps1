@@ -1,6 +1,5 @@
 $ErrorActionPreference = "Stop"
 
-$repoRoot = Split-Path -Parent $PSScriptRoot
 $singleScript = Join-Path $PSScriptRoot "build-version.ps1"
 $years = @("2023", "2024", "2025")
 

@@ -16,14 +16,18 @@ Create a reliable pipeline:
 
 Current:
 
+- `iz-matcher/` - desktop app for matching blocks and texts.
+- `iz-archicad-placer/` - desktop app for Archicad placement.
+- `build/` - build and publish scripts.
 - `IzAutoCADPlugin/` - AutoCAD plugin source code.
-- `IzAutoCADPlugin.bundle/` - AutoCAD bundle layout for deployment.
-- `scripts/` - build scripts for versioned AutoCAD builds.
+- `build/autocad/template/IzAutoCADPlugin.bundle/` - AutoCAD bundle template used for staging and release packaging.
+- `artifacts/` - local generated release outputs.
+- `docs/`, `tests/`, `samples/` - placeholders for specs, validation, and example data.
 
 Planned:
 
-- `apps/iz-matcher/` - app that reads exported Excel and matches blocks + texts.
-- `apps/iz-archicad-placer/` - app that places Archicad library elements and writes properties.
+- `iz-matcher/` - app that reads exported Excel and matches blocks + texts.
+- `iz-archicad-placer/` - app that places Archicad library elements and writes properties.
 - `docs/` - format specs, mapping rules, and integration notes.
 
 ## AutoCAD plugin
@@ -44,16 +48,42 @@ Current supported AutoCAD targets:
 Build one version:
 
 ```powershell
-.\scripts\build-version.ps1 -Year 2024
+.\build\autocad\build-version.ps1 -Year 2024
 ```
 
 Build all installed versions:
 
 ```powershell
-.\scripts\build-all.ps1
+.\build\autocad\build-all.ps1
 ```
 
 Detailed notes: [BUILDING.md](BUILDING.md)
+
+Publish desktop apps (`iz-matcher` + `iz-archicad-placer`) as single-file EXE:
+
+```powershell
+.\build\publish-all.ps1
+```
+
+Package GitHub Release archives:
+
+```powershell
+.\build\package-github-release.ps1
+```
+
+Build output is collected into:
+
+- `artifacts\izblock-win64\iz-matcher\`
+- `artifacts\izblock-win64\iz-archicad-placer\`
+- `artifacts\izblock-win64\IzAutoCADPlugin.bundle\`
+
+GitHub-ready `.zip` files are collected into:
+
+- `artifacts\github-release\iz-matcher-win64.zip`
+- `artifacts\github-release\iz-archicad-placer-win64.zip`
+- `artifacts\github-release\IzAutoCADPlugin.bundle.zip`
+
+The app zip files currently contain only the published `.exe` file for each desktop app.
 
 ## Repository tooling
 
@@ -71,4 +101,5 @@ Detailed notes: [BUILDING.md](BUILDING.md)
 ## Notes
 
 - Autodesk API assemblies are not stored in the repository.
+- AutoCAD bundle template lives in `build\autocad\template\IzAutoCADPlugin.bundle\`.
 - Build outputs and generated bundle binaries are ignored by `.gitignore`.
